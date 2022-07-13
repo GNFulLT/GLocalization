@@ -48,11 +48,17 @@ namespace GLocalization.Conceretes
                 throw;
             }
         }
-
-        public static void SetDefaultLocalization<T>(T viewModel,bool throwExceptionIfNoValue = true)
+        /// <summary>
+        /// Sets Default Localization
+        /// </summary>
+        /// <typeparam name="T">Type of first paramater</typeparam>
+        /// <param name="obj">The class that has properties with LocalizableProperty attribute</param>
+        /// <param name="throwExceptionIfNoValue">If localization file doesn't have any key that property have, throw exception or set it string.empty </param>
+        /// <exception cref="GLocalizationBaseException">If localization is not initiliazed or found a property that doesn't in localization file</exception>
+        public static void SetDefaultLocalization<T>(T obj,bool throwExceptionIfNoValue = true)
         {
-            if (DefaultLocalization is null)
-                throw new Exception("Localization is not provided");
+            if (DefaultLocalization is null || isInitialized == false)
+                throw new GLocalizationBaseException("Localization is not provided");
             var type = typeof(T);
 
             foreach (var item in type.GetProperties())
@@ -70,13 +76,13 @@ namespace GLocalization.Conceretes
                             string keyName = localizationAttr.KeyName;
                             if (DefaultLocalization.ContainsKey(keyName))
                             {
-                                type.GetProperty(propName).SetValue(viewModel, DefaultLocalization![keyName]);
+                                type.GetProperty(propName).SetValue(obj, DefaultLocalization![keyName]);
                             }
                             else
                             {
                                 if (throwExceptionIfNoValue)
                                     throw new GLocalizationBaseException("There is no key with that name");
-                                type.GetProperty(propName).SetValue(viewModel, "");
+                                type.GetProperty(propName).SetValue(obj, "");
                             }
                         }
                     }

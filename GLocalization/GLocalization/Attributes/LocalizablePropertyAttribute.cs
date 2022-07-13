@@ -5,10 +5,19 @@ using System.Text;
 
 namespace GLocalization.Attributes
 {
+    /// <summary>
+    /// Set the property be able to localize. When a class use Localization.SetLocalization the property that has this attribute automatically will be affected.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class LocalizablePropertyAttribute : Attribute
     {
+        /// <summary>
+        /// Property Name This will be getted with CallerMemberName
+        /// </summary>
         public string PropertyName { get; }
+        /// <summary>
+        /// Property Name This will be getted with CallerMemberName If name is different in file change it
+        /// </summary>
         public string KeyName { get; }
         /// <summary>
         /// Set the property be able to localize. When a class use Localization.SetLocalization the property that has this attribute automatically will be affected.

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GLocalization.Abstracts
 {
-    public interface ILangFileDeserializerStrategy
+    internal interface ILangFileDeserializerStrategy
     {
         public Dictionary<string, string> Deserialize(string text);
     }

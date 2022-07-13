@@ -21,6 +21,9 @@ namespace GLocalization.Abstracts
         private readonly string LOCALIZATION_PREFIX;
 
         private Dictionary<string, string>? _localization;
+        /// <summary>
+        /// Base class for localization manager classes
+        /// </summary>
         public BaseLocalizationManager(string prefix, IGlobalSettings settings)
         {
             LOCALIZATION_PREFIX = prefix;
@@ -54,10 +57,16 @@ namespace GLocalization.Abstracts
 
                 _localization = deserializedLang;
         }
-        public void SetLocalization<T>(T viewModel)
+        /// <summary>
+        /// Sets Localization with given settings
+        /// </summary>
+        /// <typeparam name="T">Type of first paramater</typeparam>
+        /// <param name="obj">The class that has properties with LocalizableProperty attribute</param>
+        /// <exception cref="GLocalizationBaseException">If localization is not initiliazed or found a property that doesn't in localization file</exception>
+        public void SetLocalization<T>(T obj)
         {
             if (_localization is null)
-                throw new Exception("Localization is not provided");
+                throw new GLocalizationBaseException("Localization is not provided");
             var type = typeof(T);
 
             foreach (var item in type.GetProperties())
@@ -75,13 +84,13 @@ namespace GLocalization.Abstracts
                             string keyName = localizationAttr.KeyName;
                             if(_localization.ContainsKey(keyName))
                             {
-                                type.GetProperty(propName).SetValue(viewModel, _localization![keyName]);
+                                type.GetProperty(propName).SetValue(obj, _localization![keyName]);
                             }
                             else
                             {
                                 if (_settings.ThrowExceptionIfNoValue)
                                     throw new GLocalizationBaseException("There is no key with that name");
-                                type.GetProperty(propName).SetValue(viewModel, "");
+                                type.GetProperty(propName).SetValue(obj, "");
                             }
                         }
                     }
