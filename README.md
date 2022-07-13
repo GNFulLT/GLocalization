@@ -22,5 +22,5 @@ have, it will be take it from DefaultLocalizationManager. So if you forget to ad
 it.
 
 ### **Current Supported File Types**
-- JSON
+- JSON <br />
 These are in FileType class. You can use them like : FileType.JSON for settings.
