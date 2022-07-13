@@ -18,7 +18,7 @@ The GlobalSettings paramater will be extends this interface. This interface cont
 
 ### DefaultLocalizationManager
 Every program needs a default localization for UI and this class is responsible to handle it. If Localization manager doesn't have a key that DefaultLocalizationManager
-have, it will be take it from DefaultLocalizationManager. So if you forget to add a key to newly added Localization, it will use the default localization manager to handle
+have, it will take it from DefaultLocalizationManager. So if you forget to add a key to newly added Localization, it will use the default localization manager to handle
 it.
 
 ### **Current Supported File Types**
