@@ -17,22 +17,22 @@ namespace GLocalization.Conceretes
     public static class DefaultLocalizationManager
     {
         internal static Dictionary<string, string>? DefaultLocalization { get; set; }
-
+        private static bool isInitialized = false;
         /// <summary>
         /// Load the localization assembly file 
         /// </summary>
         /// <param name="resourceFullPath">With Assembly Name example : GLocalization.Resources.defaultLocalization.locale.json</param>
         public static void Init(string resourceFullPath)
         {
+            if(isInitialized)
+                return;
             try
             {
-               
-                Stream defaultLocalizationStream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"{resourceFullPath}");
+                Stream defaultLocalizationStream = Assembly.GetCallingAssembly().GetManifestResourceStream($"{resourceFullPath}");
                 if (defaultLocalizationStream == null)
                     throw new Exception("Failed to load default localization");
                 byte[] defaultLocalizationBuffer = new byte[defaultLocalizationStream.Length];
                 defaultLocalizationStream.Read(defaultLocalizationBuffer, 0, defaultLocalizationBuffer.Length);
-
                 //Get File Type
                 FileInfo fi = new FileInfo(resourceFullPath);
 
@@ -41,6 +41,7 @@ namespace GLocalization.Conceretes
                 string fileAsString = Encoding.UTF8.GetString(defaultLocalizationBuffer);
 
                 DefaultLocalization = LangFileDeserializer.Deserialize(fileAsString, fType);
+                isInitialized = true;
             }
             catch 
             {

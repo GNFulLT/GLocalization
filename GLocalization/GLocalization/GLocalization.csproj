@@ -8,6 +8,7 @@
     <Copyright>2022</Copyright>
     <Description>Helper library to automate creating language specific properties.</Description>
     <PackageTags>Localization</PackageTags>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
