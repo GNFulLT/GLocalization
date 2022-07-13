@@ -21,6 +21,8 @@ namespace GLocalization.Abstracts
         private readonly string LOCALIZATION_PREFIX;
 
         private Dictionary<string, string>? _localization;
+
+        private bool isInitialized = false;
         /// <summary>
         /// Base class for localization manager classes
         /// </summary>
@@ -35,6 +37,8 @@ namespace GLocalization.Abstracts
         /// </summary>
         public void LoadLocalizationData()
         {
+            if (isInitialized)
+                return;
                 ReadOnlySpan<char> path = @$"./{_settings.LocalizationFolderPath}/${LOCALIZATION_PREFIX}.{_settings.LocalizationEndPrefix}.{_settings.FileType.FileExtension}";
             //Check there is a file can be readed
             if (!File.Exists(path.ToString()))
@@ -56,6 +60,7 @@ namespace GLocalization.Abstracts
                 }
 
                 _localization = deserializedLang;
+            isInitialized = true;
         }
         /// <summary>
         /// Sets Localization with given settings
