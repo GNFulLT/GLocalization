@@ -23,4 +23,6 @@ it.
 
 ### **Current Supported File Types**
 - JSON <br />
+
+
 These are in FileType class. You can use them like : FileType.JSON for settings.
