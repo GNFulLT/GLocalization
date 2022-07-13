@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>GnFulLT</Authors>
+    <Copyright>2022</Copyright>
+    <Description>Helper library to automate creating language specific properties.</Description>
+    <PackageTags>Localization</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+</Project>

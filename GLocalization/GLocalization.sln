@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLocalization", "GLocalization\GLocalization.csproj", "{ACAD1423-E98A-4671-A54E-497727C8EBA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACAD1423-E98A-4671-A54E-497727C8EBA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACAD1423-E98A-4671-A54E-497727C8EBA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACAD1423-E98A-4671-A54E-497727C8EBA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACAD1423-E98A-4671-A54E-497727C8EBA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87ABF9A1-67CE-492A-BFD1-58E0E2541E05}
+	EndGlobalSection
+EndGlobal
