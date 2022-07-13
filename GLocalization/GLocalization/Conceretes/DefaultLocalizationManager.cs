@@ -16,7 +16,7 @@ namespace GLocalization.Conceretes
     /// </summary>
     public static class DefaultLocalizationManager
     {
-        internal static Dictionary<string, string>? DefaultLocalization { get; set; }
+        internal static Dictionary<string, string> DefaultLocalization { get; set; }
         private static bool isInitialized = false;
         /// <summary>
         /// Load the localization assembly file 
@@ -72,11 +72,11 @@ namespace GLocalization.Conceretes
                         if (attr.GetType() == typeof(LocalizablePropertyAttribute))
                         {
                             var localizationAttr = attr as LocalizablePropertyAttribute;
-                            string propName = localizationAttr!.PropertyName;
+                            string propName = localizationAttr.PropertyName;
                             string keyName = localizationAttr.KeyName;
                             if (DefaultLocalization.ContainsKey(keyName))
                             {
-                                type.GetProperty(propName).SetValue(obj, DefaultLocalization![keyName]);
+                                type.GetProperty(propName).SetValue(obj, DefaultLocalization[keyName]);
                             }
                             else
                             {

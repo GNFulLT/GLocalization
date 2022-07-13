@@ -6,6 +6,6 @@ namespace GLocalization.Abstracts
 {
     internal interface ILangFileDeserializerStrategy
     {
-        public Dictionary<string, string> Deserialize(string text);
+         Dictionary<string, string> Deserialize(string text);
     }
 }

@@ -12,21 +12,21 @@ namespace GLocalization.Abstracts
         /// <summary>
         /// Folder path that localization manager should lookup to find localization file. It have to be relative path without "./" Example It can be Common/Localization if a localization file like  Common/Localization/English.localization.json
         /// </summary>
-        public string LocalizationFolderPath { get; }
+         string LocalizationFolderPath { get; }
 
         /// <summary>
         /// Example : English.{LocalizationEndPrefix}.json
         /// </summary>
-        public string LocalizationEndPrefix { get; }
+         string LocalizationEndPrefix { get; }
 
         /// <summary>
         /// The file type that localization manager will read. FileTypes can be select with FileType.
         /// </summary>
-        public IFileType FileType {  get; }
+         IFileType FileType {  get; }
 
         /// <summary>
         /// If it is false then if a value doesn't exist in json file it will be setted string.empty
         /// </summary>
-        public bool ThrowExceptionIfNoValue { get; }
+         bool ThrowExceptionIfNoValue { get; }
     }
 }

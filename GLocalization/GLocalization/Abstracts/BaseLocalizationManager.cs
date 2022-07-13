@@ -20,7 +20,7 @@ namespace GLocalization.Abstracts
         private IGlobalSettings _settings;
         private readonly string LOCALIZATION_PREFIX;
 
-        private Dictionary<string, string>? _localization;
+        private Dictionary<string, string> _localization;
 
         private bool isInitialized = false;
         /// <summary>
@@ -39,7 +39,7 @@ namespace GLocalization.Abstracts
         {
             if (isInitialized)
                 return;
-                ReadOnlySpan<char> path = @$"./{_settings.LocalizationFolderPath}/${LOCALIZATION_PREFIX}.{_settings.LocalizationEndPrefix}.{_settings.FileType.FileExtension}";
+                string path = $@"./{_settings.LocalizationFolderPath}/{LOCALIZATION_PREFIX}.{_settings.LocalizationEndPrefix}.{_settings.FileType.FileExtension}";
             //Check there is a file can be readed
             if (!File.Exists(path.ToString()))
                 throw new CannotFindBaseException(path.ToString());
@@ -85,11 +85,11 @@ namespace GLocalization.Abstracts
                         if (attr.GetType() == typeof(LocalizablePropertyAttribute))
                         {
                             var localizationAttr = attr as LocalizablePropertyAttribute;
-                            string propName = localizationAttr!.PropertyName;
+                            string propName = localizationAttr.PropertyName;
                             string keyName = localizationAttr.KeyName;
                             if(_localization.ContainsKey(keyName))
                             {
-                                type.GetProperty(propName).SetValue(obj, _localization![keyName]);
+                                type.GetProperty(propName).SetValue(obj, _localization[keyName]);
                             }
                             else
                             {

@@ -11,7 +11,7 @@ namespace GLocalization.Helpers.Strategies
     {
         public Dictionary<string, string> Deserialize(string json)
         {
-            Dictionary<string, string>? dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+            Dictionary<string, string> dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
             if (dict == null)
                 throw new CannotConvertJSONException();
 

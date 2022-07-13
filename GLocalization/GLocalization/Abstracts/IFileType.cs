@@ -12,6 +12,6 @@ namespace GLocalization.Abstracts
         /// <summary>
         /// Extension of file type
         /// </summary>
-        public string FileExtension { get; }
+        string FileExtension { get; }
     }
 }

@@ -11,10 +11,10 @@ namespace GLocalization.Helpers
         internal static Dictionary<string,string> Deserialize(string text,IFileType type)
         {
             SetDeserializeStrategy(type);
-            return _deserializeStrategy!.Deserialize(text);
+            return _deserializeStrategy.Deserialize(text);
         }
 
-        private static ILangFileDeserializerStrategy? _deserializeStrategy;
+        private static ILangFileDeserializerStrategy _deserializeStrategy;
 
         private static void SetDeserializeStrategy(IFileType type)
         {
