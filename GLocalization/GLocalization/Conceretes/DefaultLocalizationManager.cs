@@ -1,4 +1,6 @@
 ﻿using GLocalization.Abstracts;
+using GLocalization.Attributes;
+using GLocalization.Exceptions;
 using GLocalization.Helpers;
 using Newtonsoft.Json;
 using System;
@@ -43,6 +45,41 @@ namespace GLocalization.Conceretes
             catch 
             {
                 throw;
+            }
+        }
+
+        public static void SetDefaultLocalization<T>(T viewModel,bool throwExceptionIfNoValue = true)
+        {
+            if (DefaultLocalization is null)
+                throw new Exception("Localization is not provided");
+            var type = typeof(T);
+
+            foreach (var item in type.GetProperties())
+            {
+                if (item.PropertyType == typeof(string))
+                {
+                    object[] attrs = item.GetCustomAttributes(true);
+
+                    foreach (var attr in attrs)
+                    {
+                        if (attr.GetType() == typeof(LocalizablePropertyAttribute))
+                        {
+                            var localizationAttr = attr as LocalizablePropertyAttribute;
+                            string propName = localizationAttr!.PropertyName;
+                            string keyName = localizationAttr.KeyName;
+                            if (DefaultLocalization.ContainsKey(keyName))
+                            {
+                                type.GetProperty(propName).SetValue(viewModel, DefaultLocalization![keyName]);
+                            }
+                            else
+                            {
+                                if (throwExceptionIfNoValue)
+                                    throw new GLocalizationBaseException("There is no key with that name");
+                                type.GetProperty(propName).SetValue(viewModel, "");
+                            }
+                        }
+                    }
+                }
             }
         }
 
