@@ -35,12 +35,12 @@ Example we have a project like :
 
 AdminPanel <br />
 ├── Utilities <br />
-│   ├── Builders  <br />
-│   └── Readers  <br />
+│   &nbsp├── Builders  <br />
+│   &nbsp└── Readers  <br />
 ├── Helpers  <br />
-│   └── LazyLoaders   <br />
+│   &nbsp└── LazyLoaders   <br />
 ├── Resources  <br />
-     >└── English.locale.yaml  <br />
+     &nbsp└── English.locale.yaml  <br />
 
 Init code will be like : 
 
@@ -92,14 +92,14 @@ In settings, endfix : "locale" and our file type yaml so extension will be ".yam
 
 AdminPanel  <br />
 ├── Utilities  <br />
-│   ├── Builders  <br />
-│   └── Readers  <br />
+│   &nbsp├── Builders  <br />
+│   &nbsp└── Readers  <br />
 ├── Helpers   <br />
-│   └── LazyLoaders   <br />
+│   &nbsp└── LazyLoaders   <br />
 ├── Resources  <br />
-     └── English.locale.yaml  <br />
+     &nbsp└── English.locale.yaml  <br />
 ├── Resources  <br />
-     └── French.locale.yaml  <br />
+     &nbsp└── French.locale.yaml  <br />
      
 And French.locale.yaml file's 'Build Action' is Content and 'Copy to Output Direction' is Copy Always. And it is time to use it. Inside the class that we want
 to use localization :
