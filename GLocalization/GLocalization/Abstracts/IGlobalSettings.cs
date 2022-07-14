@@ -5,6 +5,24 @@ using System.Text;
 namespace GLocalization.Abstracts
 {
     /// <summary>
+    /// What will be happen if manager doesn't have a key that default manager have
+    /// </summary>
+    public enum ManagerHaveNotOptions
+    {
+        /// <summary>
+        /// Set the value string.empty
+        /// </summary>
+        SetEmpty,
+        /// <summary>
+        /// Set the value default localization
+        /// </summary>
+        SetDefault,
+        /// <summary>
+        /// Throw an exception
+        /// </summary>
+        ThrowExcept
+    }
+    /// <summary>
     /// Settings that will be used by Localization Managers. Every Manager can be own their special settings.
     /// </summary>
     public interface IGlobalSettings
@@ -28,5 +46,10 @@ namespace GLocalization.Abstracts
         /// If it is false then if a value doesn't exist in json file it will be setted string.empty
         /// </summary>
          bool ThrowExceptionIfNoValue { get; }
+
+        /// <summary>
+        /// What will be happen if manager doesn't have a key that default manager have
+        /// </summary>
+        ManagerHaveNotOptions IfManagerHaveNotValue { get; }
     }
 }

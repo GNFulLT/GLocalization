@@ -55,7 +55,20 @@ namespace GLocalization.Abstracts
                 { 
                     if(!deserializedLang.ContainsKey(pair.Key))
                     {
-                        deserializedLang.Add(pair.Key, pair.Value);
+                        switch (_settings.IfManagerHaveNotValue)
+                        {
+                            case ManagerHaveNotOptions.SetEmpty:
+                                deserializedLang.Add(pair.Key, "");
+                                break;
+                            case ManagerHaveNotOptions.SetDefault:
+                                deserializedLang.Add(pair.Key, pair.Value);
+                                break;
+                            case ManagerHaveNotOptions.ThrowExcept:
+                                throw new GLocalizationBaseException($"In the default localization, a key named with that {pair.Key} couldn't find in {filePath}");
+                            default:
+                                deserializedLang.Add(pair.Key, pair.Value);
+                                break;
+                        }
                     }
                 }
 
