@@ -28,7 +28,6 @@ namespace GLocalization.Conceretes
                 return;
             try
             {
-                var names = Assembly.GetCallingAssembly().GetManifestResourceNames();
                 Stream defaultLocalizationStream = Assembly.GetCallingAssembly().GetManifestResourceStream($"{resourceFullPath}");
                 if (defaultLocalizationStream == null)
                     throw new Exception("Failed to load default localization");

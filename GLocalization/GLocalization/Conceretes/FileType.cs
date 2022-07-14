@@ -26,11 +26,18 @@ namespace GLocalization.Conceretes
         /// </summary>
         public static FileType JSON = new FileType("json");
 
+        /// <summary>
+        /// Represents for YAML file
+        /// </summary>
+        public static FileType YAML = new FileType("yaml");
+
         internal static IFileType GetFileTypeByExtension(string extension)
         {
+            extension = extension.ToLower();
             switch (extension)
             {
-                case "json": return JSON;
+                case ".json": return JSON;
+                case ".yaml": return YAML;
                 default: return JSON;
             }
         }

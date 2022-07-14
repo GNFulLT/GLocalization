@@ -9,9 +9,11 @@
 
   <ItemGroup>
     <None Remove="Resources\English.locale.json" />
+    <None Remove="Resources\English.locale.yaml" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\English.locale.yaml" />
     <EmbeddedResource Include="Resources\English.locale.json" />
   </ItemGroup>
 

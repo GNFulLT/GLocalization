@@ -23,6 +23,9 @@ namespace GLocalization.Helpers
                 case "json":
                     _deserializeStrategy = new JsonFileDeserializerStrategy();
                     return;
+                case "yaml":
+                    _deserializeStrategy = new YamlFileDeserializerStrategy();
+                    return;
                 default:
                     _deserializeStrategy = new JsonFileDeserializerStrategy();
                     return;
