@@ -50,7 +50,7 @@ Init code will be like :
 
 DefaultLocalizationManager and other managers have protection against to load same data twice. So if you are not sure about loading data, you can use init again.
 
-After that we have to create setting class for our localization managers. Example with singeleton design : 
+After that we have to create setting class for our localization managers. Example with singleton design : 
 
 ```
  public class GlobalSettings : IGlobalSettings
