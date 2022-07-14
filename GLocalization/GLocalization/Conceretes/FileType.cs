@@ -1,4 +1,5 @@
 ﻿using GLocalization.Abstracts;
+using GLocalization.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -38,7 +39,7 @@ namespace GLocalization.Conceretes
             {
                 case ".json": return JSON;
                 case ".yaml": return YAML;
-                default: return JSON;
+                default: throw new NotSupportedFileTypeException();
             }
         }
     }

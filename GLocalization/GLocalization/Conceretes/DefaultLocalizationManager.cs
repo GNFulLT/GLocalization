@@ -18,6 +18,7 @@ namespace GLocalization.Conceretes
     {
         internal static Dictionary<string, string> DefaultLocalization { get; set; }
         private static bool isInitialized = false;
+        private static string filePath = string.Empty;
         /// <summary>
         /// Load the localization assembly file 
         /// </summary>
@@ -42,6 +43,7 @@ namespace GLocalization.Conceretes
 
                 DefaultLocalization = LangFileDeserializer.Deserialize(fileAsString, fType);
                 isInitialized = true;
+                filePath = resourceFullPath;
             }
             catch 
             {
@@ -53,9 +55,8 @@ namespace GLocalization.Conceretes
         /// </summary>
         /// <typeparam name="T">Type of first paramater</typeparam>
         /// <param name="obj">The class that has properties with LocalizableProperty attribute</param>
-        /// <param name="throwExceptionIfNoValue">If localization file doesn't have any key that property have, throw exception or set it string.empty </param>
         /// <exception cref="GLocalizationBaseException">If localization is not initiliazed or found a property that doesn't in localization file</exception>
-        public static void SetDefaultLocalization<T>(T obj,bool throwExceptionIfNoValue = true)
+        public static void SetDefaultLocalization<T>(T obj)
         {
             if (DefaultLocalization is null || isInitialized == false)
                 throw new GLocalizationBaseException("Localization is not provided");
@@ -80,9 +81,7 @@ namespace GLocalization.Conceretes
                             }
                             else
                             {
-                                if (throwExceptionIfNoValue)
-                                    throw new GLocalizationBaseException("There is no key with that name");
-                                type.GetProperty(propName).SetValue(obj, "");
+                               throw new GLocalizationBaseException($"Looked for {keyName} for the property {propName} but couldn't find in the {filePath}");
                             }
                         }
                     }

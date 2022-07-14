@@ -1,5 +1,6 @@
 ﻿using GLocalization.Abstracts;
 using GLocalization.Exceptions;
+using GLocalization.Exceptions.CannotConvert;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,7 @@ namespace GLocalization.Helpers.Strategies
             var deserializer = new DeserializerBuilder().Build();
             Dictionary<string,string> dict = deserializer.Deserialize<Dictionary<string,string>>(text);
             if (dict == null)
-                throw new GLocalizationBaseException("Cannot convert yaml file");
+                throw new CannotConvertYAMLException();
             return dict;
         }
     }

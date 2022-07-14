@@ -21,7 +21,7 @@ namespace GLocalization.Abstracts
         private readonly string LOCALIZATION_PREFIX;
 
         private Dictionary<string, string> _localization;
-
+        private string filePath = string.Empty;
         private bool isInitialized = false;
         /// <summary>
         /// Base class for localization manager classes
@@ -61,6 +61,7 @@ namespace GLocalization.Abstracts
 
                 _localization = deserializedLang;
             isInitialized = true;
+            filePath = path;
         }
         /// <summary>
         /// Sets Localization with given settings
@@ -70,7 +71,7 @@ namespace GLocalization.Abstracts
         /// <exception cref="GLocalizationBaseException">If localization is not initiliazed or found a property that doesn't in localization file</exception>
         public void SetLocalization<T>(T obj)
         {
-            if (_localization is null)
+            if (_localization is null || !isInitialized)
                 throw new GLocalizationBaseException("Localization is not provided");
             var type = typeof(T);
 
@@ -94,7 +95,7 @@ namespace GLocalization.Abstracts
                             else
                             {
                                 if (_settings.ThrowExceptionIfNoValue)
-                                    throw new GLocalizationBaseException("There is no key with that name");
+                                    throw new GLocalizationBaseException($"Looked for {keyName} for the property {propName} but couldn't find in the {filePath}");
                                 type.GetProperty(propName).SetValue(obj, "");
                             }
                         }
