@@ -55,8 +55,9 @@ namespace GLocalization.Conceretes
         /// </summary>
         /// <typeparam name="T">Type of first paramater</typeparam>
         /// <param name="obj">The class that has properties with LocalizableProperty attribute</param>
+        /// <param name="throwExceptionIfNoValue">Throw an exception if a property doesn't have correspond value in localization file</param>
         /// <exception cref="GLocalizationBaseException">If localization is not initiliazed or found a property that doesn't in localization file</exception>
-        public static void SetDefaultLocalization<T>(T obj)
+        public static void SetDefaultLocalization<T>(T obj, bool throwExceptionIfNoValue = true)
         {
             if (DefaultLocalization is null || isInitialized == false)
                 throw new GLocalizationBaseException("Localization is not provided");
@@ -81,7 +82,9 @@ namespace GLocalization.Conceretes
                             }
                             else
                             {
-                               throw new GLocalizationBaseException($"Looked for {keyName} for the property {propName} but couldn't find in the {filePath}");
+                                if (throwExceptionIfNoValue)
+                                    throw new GLocalizationBaseException($"Looked for {keyName} for the property {propName} but couldn't find in the {filePath}");
+                                type.GetProperty(propName).SetValue(obj, string.Empty);
                             }
                         }
                     }
