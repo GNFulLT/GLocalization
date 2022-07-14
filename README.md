@@ -101,7 +101,7 @@ AdminPanel  <br />
 ├── Resources  <br />
      └── French.locale.yaml  <br />
      
-And French.locale.yaml file's 'Build Action' is Conent and 'Copy to Output Direction' is Copy Always. And it is time to use it. Inside the class that we want
+And French.locale.yaml file's 'Build Action' is Content and 'Copy to Output Direction' is Copy Always. And it is time to use it. Inside the class that we want
 to use localization :
 
 ```
