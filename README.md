@@ -109,7 +109,7 @@ to use localization :
   {
     public LoginScreenLoginPanelViewModel()
     {                
-         DefaultLocalizationManager.Init("ExamSystem.Core.Resources.English.locale.yaml");
+         DefaultLocalizationManager.Init("AdminPanel.Resources.English.locale.yaml");
          FrenchLocalizationManager.Instance.LoadLocalizationData();
          FrenchLocalizationManager.Instance.SetLocalization(this);
     }
