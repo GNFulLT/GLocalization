@@ -26,7 +26,7 @@ it.
 - YAML <br />
 
 
-These are in FileType class. You can use them like : FileType.JSON for settings.
+They are in FileType class. You can use them like : FileType.JSON for settings.
 
 ## **How To Use**
 Firstly you have to initialize DefaultLocalization file. It have to be embedded resource so in any case application can reference the defaultlocalization. 
