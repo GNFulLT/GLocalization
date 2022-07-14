@@ -59,6 +59,7 @@ After that we have to create setting class for our localization managers. Exampl
         public IFileType FileType { get; private set; }
         public bool ThrowExceptionIfNoValue { get; private set; }
         public string LocalizationFolderPath { get; private set; }
+        public ManagerHaveNotOptions IfManagerHaveNotValue { get; private set; }
 
         public static GlobalSettings Instance { get; } = new GlobalSettings();
 
@@ -68,6 +69,7 @@ After that we have to create setting class for our localization managers. Exampl
             FileType = GLocalization.Conceretes.FileType.YAML;
             ThrowExceptionIfNoValue = true;
             LocalizationFolderPath = "Localization";
+            IfManagerHaveNotValue = ManagerHaveNotOptions.SetDefault;
         }
     }
 ```
