@@ -40,7 +40,7 @@ AdminPanel <br />
 ├── Helpers  <br />
 │   └── LazyLoaders   <br />
 ├── Resources  <br />
-     └── English.locale.yaml  <br />
+     <space>└── English.locale.yaml  <br />
 
 Init code will be like : 
 
