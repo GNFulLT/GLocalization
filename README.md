@@ -40,7 +40,7 @@ AdminPanel <br />
 ├── Helpers  <br />
 │   └── LazyLoaders   <br />
 ├── Resources  <br />
-     └── English.locale.yaml  <br />
+│     └── English.locale.yaml  <br />
 
 Init code will be like : 
 
@@ -97,9 +97,9 @@ AdminPanel  <br />
 ├── Helpers   <br />
 │   └── LazyLoaders   <br />
 ├── Resources  <br />
-     └── English.locale.yaml  <br />
+│    └── English.locale.yaml  <br />
 ├── Localization  <br />
-     └── French.locale.yaml  <br />
+│     └── French.locale.yaml  <br />
      
 And French.locale.yaml file's 'Build Action' is Content and 'Copy to Output Direction' is Copy Always. And it is time to use it. Inside the class that we want
 to use localization :
